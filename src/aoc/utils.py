@@ -5,6 +5,7 @@ from types import ModuleType
 def read_content(path: Path) -> str:
     return path.read_text()
 
+
 def try_import(path: str) -> ModuleType:
     root = Path(__file__).parent
     try:
@@ -34,3 +35,4 @@ MODULES = {}
 import_modules()
 
 AVAILABLE_DAYS = list_days()
+
