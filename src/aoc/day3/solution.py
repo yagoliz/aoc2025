@@ -1,4 +1,4 @@
-def part_1(content: str) -> int:
+def part_1(content: str) -> str:
     joltage = 0
     for line in content.splitlines():
         maxL = 0
@@ -15,7 +15,7 @@ def part_1(content: str) -> int:
         
         joltage += maxL*10 + maxR
 
-    return joltage
+    return str(joltage)
 
 
 def find_best_number(numbers: str) -> tuple[int, int]:
@@ -35,7 +35,7 @@ def find_best_number(numbers: str) -> tuple[int, int]:
     return (maxL, posL)
 
 
-def part_2(content: str) -> int:
+def part_2(content: str) -> str:
     joltage = 0
     for line in content.splitlines():
         N = len(line)
@@ -48,4 +48,4 @@ def part_2(content: str) -> int:
 
         joltage += line_joltage
 
-    return joltage
+    return str(joltage)

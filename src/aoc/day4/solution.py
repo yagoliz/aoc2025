@@ -1,6 +1,6 @@
 from ..matrix import get_adjacent_idx, make_matrix
 
-def part_1(content: str) -> int:
+def part_1(content: str) -> str:
     matrix = make_matrix(content)
 
     m = len(matrix)
@@ -22,10 +22,10 @@ def part_1(content: str) -> int:
             if count < 4:
                 accessible += 1
 
-    return accessible
+    return str(accessible)
 
 
-def part_2(content: str) -> int:
+def part_2(content: str) -> str:
     matrix = make_matrix(content)
 
     m = len(matrix)
@@ -57,4 +57,4 @@ def part_2(content: str) -> int:
         if changed:
             matrix = tmp_matrix
     
-    return accessible
+    return str(accessible)

@@ -1,4 +1,4 @@
-def part_1(content: str):
+def part_1(content: str) -> str:
 
     password = 0
     dial = 50
@@ -14,10 +14,10 @@ def part_1(content: str):
         if dial == 0:
             password += 1
 
-    return password
+    return str(password)
 
 
-def part_2(content: str):
+def part_2(content: str) -> str:
     
     password = 0
     dial = 50
@@ -45,4 +45,4 @@ def part_2(content: str):
             password += 1
             dial -= 100
 
-    return password
+    return str(password)

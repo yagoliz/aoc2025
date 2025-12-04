@@ -9,7 +9,7 @@ def is_invalid(num: str) -> bool:
     return num[:n//2] == num[n//2:]
 
 
-def part_1(content: str) -> int:
+def part_1(content: str) -> str:
     count = 0
     for ids in content.split(","):
         left, right = ids.split("-")
@@ -18,7 +18,7 @@ def part_1(content: str) -> int:
             if is_invalid(str(num)):
                 count += num
 
-    return count
+    return str(count)
 
 
 def is_invalid_seq(num: str) -> bool:
@@ -42,7 +42,7 @@ def is_invalid_seq(num: str) -> bool:
     return False
 
 
-def part_2(content: str) -> int:
+def part_2(content: str) -> str:
     count = 0
     for ids in content.split(","):
         left, right = ids.split("-")
@@ -51,4 +51,4 @@ def part_2(content: str) -> int:
             if is_invalid_seq(str(num)):
                 count += num
 
-    return count
+    return str(count)
