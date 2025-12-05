@@ -25,7 +25,7 @@ def is_invalid_seq(num: str) -> bool:
     n = len(num)
 
     for sublen in range(1, n//2 + 1):
-        # If n is not a multiple of n, for sure it's valid
+        # If n is not a multiple of n, for sure it's invalid
         if n % sublen != 0:
             continue
 
