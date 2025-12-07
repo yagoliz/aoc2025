@@ -9,7 +9,7 @@ from aoc.utils import AVAILABLE_DAYS, MODULES, read_content
 def main(days: list[str], parts: list[str], perf: bool, n_times: int = 10):
     for day in days:
         module = MODULES[day]
-        content = read_content(Path(f"input/{day}.txt"))
+        content = read_content(Path(f"./input/{day}.txt"))
 
         for part in parts:
             if part == "1":

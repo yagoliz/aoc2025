@@ -1,5 +1,4 @@
-import numpy as np
-
+from ..ranges import merge_ranges, in_range
 
 def part_1(content: str) -> str:
     [summary, numbers] = list(content.split("\n\n"))
@@ -15,16 +14,14 @@ def part_1(content: str) -> str:
             start, end = end, start
         intervals.append((start, end))
 
-    intervals.sort(key=lambda r: r[0])
+    ranges = merge_ranges(intervals)
 
     # We check whether the product lies between any interval (numpy does SIMD heavy lifting here)
     fresh = 0
     for product in numbers.splitlines():
         product = int(product)
-        for start_val, end_val in intervals:
-            if (product >= start_val) and (product <= end_val):
-                fresh += 1
-                continue
+        if in_range(product, ranges):
+            fresh += 1
 
     return str(fresh)
 

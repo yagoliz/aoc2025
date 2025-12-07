@@ -7,32 +7,31 @@ def make_matrix(content: str) -> list[list[str]]:
     return matrix
 
 
+NEIGHBOURS = [
+    (-1,-1), (-1, 0), (-1, 1),
+    ( 0,-1),          ( 0, 1),
+    ( 1,-1), ( 1, 0), ( 1, 1)
+]
+
 def get_adjacent_idx(i: int, j: int, rows: int, cols: int) -> list[tuple[int, int]]:
     
     if i < 0 or j < 0 or i >= rows or j >= cols:
         raise RuntimeError(f"Values of i,j out of bounds. Provided {i},{j} - Rows: {rows}, Cols: {cols}")
 
-    adjacents_i = [i]
-    adjacents_j = [j]
-    
-    if i > 0:
-        adjacents_i.append(i-1)
-    
-    if i < rows-1:
-        adjacents_i.append(i+1)
-
-    if j > 0:
-        adjacents_j.append(j-1)
-
-    if j < cols-1:
-        adjacents_j.append(j+1)
-        
     adjacents = []
-    for val_i in adjacents_i:
-        for val_j in adjacents_j:
-            if val_i == i and val_j == j:
-                continue
-
-            adjacents.append((val_i, val_j))
+    for (nx, ny) in NEIGHBOURS:
+        di, dj = i + nx, j + ny
+        if 0 <= di < rows and 0 <= dj < cols:
+            adjacents.append((di, dj))
 
     return adjacents
+
+
+def precompute_adjacents(rows: int, cols: int) -> list[list[list[tuple[int, int]]]]:
+    adj = [[None] * cols for _ in range(rows)]
+
+    for i in range(rows):
+        for j in range(cols):
+            adj[i][j] = get_adjacent_idx(i, j, rows, cols)
+
+    return adj
