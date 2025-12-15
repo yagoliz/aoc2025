@@ -111,13 +111,13 @@ def part_2(content: str) -> str:
 
         elif g0 != -1 and g1 != -1:
             if g0 <= g1:
-                for l in range(npos):
-                    if assigned[l] == g1:
-                        assigned[l] = g0
+                for gswitch in range(npos):
+                    if assigned[gswitch] == g1:
+                        assigned[gswitch] = g0
             else:
-                for l in range(npos):
-                    if assigned[l] == g0:
-                        assigned[l] = g1
+                for gswitch in range(npos):
+                    if assigned[gswitch] == g0:
+                        assigned[gswitch] = g1
 
         else:
             if g0 == -1:
