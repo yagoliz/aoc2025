@@ -16,7 +16,6 @@ def part_1(content: str) -> str:
 
     ranges = merge_ranges(intervals)
 
-    # We check whether the product lies between any interval (numpy does SIMD heavy lifting here)
     fresh = 0
     for product in numbers.splitlines():
         product = int(product)
