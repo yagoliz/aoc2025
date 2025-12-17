@@ -82,7 +82,7 @@ if __name__ == "__main__":
         parts = [args.part]
 
     perf = False
-    if args.perf is not None:
+    if args.perf:
         perf = True
 
     n_times = args.n_times
