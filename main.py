@@ -20,7 +20,7 @@ def main(days: list[str], parts: list[str], perf: bool, n_times: int = 10):
                 raise RuntimeError(
                     f"There are only 2 parts to this problem! You inputted {part}"
                 )
-            
+
             result = func(content)
             print(f"Solution {day} - Part {part}: {result}")
 
@@ -54,16 +54,14 @@ if __name__ == "__main__":
 
     # Analyze Timing
     parser.add_argument(
-        "--perf",
-        action="store_true",
-        help = "Time the execution of the solution"
+        "--perf", action="store_true", help="Time the execution of the solution"
     )
 
     parser.add_argument(
         "--n-times",
         type=int,
         default=10,
-        help="How many runs to calculate the function timing"
+        help="How many runs to calculate the function timing",
     )
 
     # Our main routine

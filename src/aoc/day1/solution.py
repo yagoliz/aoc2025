@@ -6,9 +6,9 @@ def part_1(content: str) -> str:
         rotation = line[0]
         number = int(line[1:])
 
-        if rotation == 'L':
+        if rotation == "L":
             dial = (dial - number) % 100
-        elif rotation == 'R':
+        elif rotation == "R":
             dial = (dial + number) % 100
 
         if dial == 0:
@@ -18,7 +18,7 @@ def part_1(content: str) -> str:
 
 
 def part_2(content: str) -> str:
-    
+
     password = 0
     dial = 50
     for line in content.splitlines():
@@ -29,7 +29,7 @@ def part_2(content: str) -> str:
 
         number %= 100
 
-        if rotation == 'L':
+        if rotation == "L":
             number *= -1
 
         old_dial = dial

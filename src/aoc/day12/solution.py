@@ -13,6 +13,7 @@ def parse_input(content: str) -> tuple[int, int, list[int]]:
     return grids
 
 
+# This is such a "troll" experience
 def part_1(content: str) -> str:
     grids = parse_input(content)
 

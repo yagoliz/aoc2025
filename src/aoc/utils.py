@@ -2,6 +2,7 @@ from importlib import import_module
 from pathlib import Path
 from types import ModuleType
 
+
 def read_content(path: Path) -> str:
     return path.read_text()
 
@@ -35,4 +36,3 @@ MODULES = {}
 import_modules()
 
 AVAILABLE_DAYS = list_days()
-

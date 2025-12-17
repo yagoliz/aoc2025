@@ -1,5 +1,6 @@
 from aoc.linalg import distance_3d
 
+
 def parse_positions(content: str) -> list[tuple[int, int, int]]:
     positions = []
     for line in content.splitlines():
@@ -7,12 +8,14 @@ def parse_positions(content: str) -> list[tuple[int, int, int]]:
     return positions
 
 
-def get_adjacency_matrix(positions: list[tuple[int, int, int]]) -> list[list[int, int, float]]:
+def get_adjacency_matrix(
+    positions: list[tuple[int, int, int]],
+) -> list[list[int, int, float]]:
     nelem = len(positions)
 
     distances = []
-    for i in range(nelem-1):
-        for j in range(i+1,nelem):
+    for i in range(nelem - 1):
+        for j in range(i + 1, nelem):
             dist = distance_3d(positions[i], positions[j])
             distances.append([i, j, dist])
 
@@ -24,7 +27,7 @@ def are_all_same_group(assigned: list[int]) -> bool:
 
     if g0 == -1:
         return False
-    
+
     for i in range(1, len(assigned)):
         if assigned[i] != g0:
             return False
@@ -45,7 +48,7 @@ def part_1(content: str) -> str:
     max_number = 1000
     group_num = 0
     k = 0
-    for (i, j, dist) in adj:
+    for i, j, dist in adj:
         k += 1
 
         g0, g1 = assigned[i], assigned[j]
@@ -96,12 +99,11 @@ def part_2(content: str) -> str:
     adj = get_adjacency_matrix(positions)
     adj = sorted(adj, key=lambda d: d[2])
 
-
     npos = len(positions)
     assigned = [-1 for _ in range(npos)]
 
     group_num, result = 0, -1
-    for (i, j, dist) in adj:
+    for i, j, dist in adj:
 
         g0, g1 = assigned[i], assigned[j]
 

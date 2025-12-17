@@ -10,14 +10,14 @@ def build_degrees(matrix: list[list[str]]) -> tuple[list[list[int]], int, int]:
 
     for i in range(m):
         for j in range(n):
-            if matrix[i][j] != '@':
+            if matrix[i][j] != "@":
                 continue
-            
+
             degree = 0
-            for (nx, ny) in adj[i][j]:
-                if matrix[nx][ny] == '@':
+            for nx, ny in adj[i][j]:
+                if matrix[nx][ny] == "@":
                     degree += 1
-            
+
             deg[i][j] = degree
 
     return deg, m, n
@@ -30,7 +30,7 @@ def part_1(content: str) -> str:
     accessible = 0
     for i in range(m):
         for j in range(n):
-            if matrix[i][j] == '@' and deg[i][j] < 4:
+            if matrix[i][j] == "@" and deg[i][j] < 4:
                 accessible += 1
 
     return str(accessible)
@@ -41,13 +41,13 @@ def part_2(content: str) -> str:
     deg, m, n = build_degrees(matrix)
     adj = precompute_adjacents(m, n)
 
-    alive = [[matrix[i][j] == '@' for j in range(n)] for i in range(m)]
+    alive = [[matrix[i][j] == "@" for j in range(n)] for i in range(m)]
 
     queue = []
     for i in range(m):
         for j in range(n):
-            if matrix[i][j] == '@' and deg[i][j] < 4:
-                queue.append((i,j))
+            if matrix[i][j] == "@" and deg[i][j] < 4:
+                queue.append((i, j))
 
     accessible = 0
     while queue:
@@ -57,11 +57,11 @@ def part_2(content: str) -> str:
 
         alive[i][j] = False
 
-        for (nx, ny) in adj[i][j]:
+        for nx, ny in adj[i][j]:
             if not alive[nx][ny]:
                 continue
 
-            if matrix[nx][ny] != '@':
+            if matrix[nx][ny] != "@":
                 continue
 
             deg[nx][ny] -= 1
@@ -69,5 +69,5 @@ def part_2(content: str) -> str:
                 queue.append((nx, ny))
 
         accessible += 1
-    
+
     return str(accessible)

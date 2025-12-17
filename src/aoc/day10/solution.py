@@ -9,8 +9,8 @@ def parse_matrix(machine: str) -> tuple[list[list[int]], list[int]]:
     buttons = split_machine[1:-1]
 
     # Processing the lights
-    lights = lights.replace("[","")
-    lights = lights.replace("]","")
+    lights = lights.replace("[", "")
+    lights = lights.replace("]", "")
     nrows = len(lights)
     b = [0] * nrows
     for i, char in enumerate(lights):
@@ -22,8 +22,8 @@ def parse_matrix(machine: str) -> tuple[list[list[int]], list[int]]:
     A = [[0] * ncols for _ in range(nrows)]
 
     for j, button in enumerate(buttons):
-        values = button.replace("(","")
-        values = values.replace(")","")
+        values = button.replace("(", "")
+        values = values.replace(")", "")
         values = values.split(",")
         for value in values:
             A[int(value)][j] = 1
@@ -38,8 +38,8 @@ def parse_matrix_2(machine: str) -> tuple[list[list[int]], list[int]]:
     buttons = split_machine[1:-1]
 
     # Processing the lights
-    lights = lights.replace("{","")
-    lights = lights.replace("}","")
+    lights = lights.replace("{", "")
+    lights = lights.replace("}", "")
     lights = lights.split(",")
     nrows = len(lights)
     b = [0] * nrows
@@ -51,8 +51,8 @@ def parse_matrix_2(machine: str) -> tuple[list[list[int]], list[int]]:
     A = [[0] * ncols for _ in range(nrows)]
 
     for j, button in enumerate(buttons):
-        values = button.replace("(","")
-        values = values.replace(")","")
+        values = button.replace("(", "")
+        values = values.replace(")", "")
         values = values.split(",")
         for value in values:
             A[int(value)][j] = 1
@@ -65,7 +65,7 @@ def gaussian_elim_gf2(A: list[list[int]], b: list[int]) -> tuple[list[int], bool
     n_cols = len(A[0])
 
     pivot_col = [-1] * n_rows
-    row = 0   # current row to place pivot
+    row = 0  # current row to place pivot
 
     for col in range(n_cols):
         # find a pivot row with A[r][col] == 1, r >= row
@@ -76,7 +76,7 @@ def gaussian_elim_gf2(A: list[list[int]], b: list[int]) -> tuple[list[int], bool
                 break
 
         if pivot_row == -1:
-            continue   # no pivot in this column
+            continue  # no pivot in this column
 
         # swap pivot_row with current 'row'
         A[pivot_row], A[row] = A[row], A[pivot_row]
@@ -109,13 +109,15 @@ def gaussian_elim_gf2(A: list[list[int]], b: list[int]) -> tuple[list[int], bool
     return (pivot_col, True)
 
 
-def build_solution_and_nullspace(A: list[list[int]], b: list[int], pivot_col: list[int]) -> tuple[list[int], list[list[int]]]:
+def build_solution_and_nullspace(
+    A: list[list[int]], b: list[int], pivot_col: list[int]
+) -> tuple[list[int], list[list[int]]]:
     n_rows = len(A)
     n_cols = len(A[0])
 
     # which columns are pivot?
     is_pivot_col = [False] * n_cols
-    for r in  range(n_rows):
+    for r in range(n_rows):
         if pivot_col[r] != -1:
             is_pivot_col[pivot_col[r]] = True
 
@@ -132,7 +134,7 @@ def build_solution_and_nullspace(A: list[list[int]], b: list[int], pivot_col: li
         pc = pivot_col[r]
         if pc == -1:
             continue
-        x0[pc] = b[r]   # because A is in RREF-like form now
+        x0[pc] = b[r]  # because A is in RREF-like form now
 
     # nullspace basis
     # For each free column f, construct a vector v with:
@@ -185,7 +187,7 @@ def min_presses(A: list[list[int]], b: list[int]) -> int:
     n_cols = len(A[0])
 
     # Enumerate all 2^d combinations
-    for mask in range(1<<d):
+    for mask in range(1 << d):
         # Start from the particular solution
         x = x0.copy()
 

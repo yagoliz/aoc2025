@@ -11,7 +11,7 @@ def merge_ranges(ranges: list[tuple[int, int]]) -> list[tuple[int, int]]:
             # No overlapping
             if start_val > last_end:
                 merged.append((start_val, end_val))
-            
+
             # Any overlapping in ranges
             else:
                 merged[-1] = (last_start, max(end_val, last_end))
@@ -31,5 +31,5 @@ def in_range(x: int, ranges: list[tuple[int, int]]) -> bool:
             lo = mid + 1
         else:
             return True
-    
+
     return False

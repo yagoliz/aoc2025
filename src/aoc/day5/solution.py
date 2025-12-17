@@ -1,5 +1,6 @@
 from ..ranges import merge_ranges, in_range
 
+
 def part_1(content: str) -> str:
     [summary, numbers] = list(content.split("\n\n"))
 
@@ -51,9 +52,9 @@ def part_2(content: str) -> str:
             # No overlapping
             if start_val > last_end:
                 merged.append((start_val, end_val))
-            
+
             # Any overlapping in ranges
             else:
                 merged[-1] = (last_start, max(end_val, last_end))
 
-    return str(sum(end_val-start_val+1 for start_val, end_val in merged))
+    return str(sum(end_val - start_val + 1 for start_val, end_val in merged))
